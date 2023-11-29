@@ -19,6 +19,8 @@ status = []
 while True:
     # Grab a single frame of video
     ret, frame = cap.read()
+    if ret is False or frame is None:  # Kiểm tra xem frame có giá trị hay không
+        break
     labels = []
     gray = cv2.cvtColor(frame,cv2.COLOR_BGR2GRAY)
     faces = face_classifier.detectMultiScale(gray,1.3,5)
